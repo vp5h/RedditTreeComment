@@ -16,7 +16,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const TreeItem = ({ onSelectCallback, label, isSelected, children }) => {
   const [isOpen, toggleItemOpen] = useState(null);
   const [selected, setSelected] = useState(isSelected);
-  
+
   const useStyles = makeStyles((theme) => ({
     root: {
       maxWidth: 345,
@@ -24,8 +24,7 @@ const TreeItem = ({ onSelectCallback, label, isSelected, children }) => {
     media: {
       height: 0,
       paddingTop: '56.25%', // 16:9
-    }
-
+    },
   }));
   const classes = useStyles();
   return (
@@ -55,18 +54,18 @@ const TreeItem = ({ onSelectCallback, label, isSelected, children }) => {
           <Card className={classes.root}>
             <CardHeader
               avatar={
-                <Avatar aria-label="recipe" className={classes.avatar} src={label.avatar}>
-                  
-                </Avatar>
+                <Avatar
+                  aria-label="recipe"
+                  className={classes.avatar}
+                  src={label.avatar}
+                ></Avatar>
               }
-             
               title={label.name}
-              // subheader="September 14, 2016"
             />
 
             <CardContent>
               <Typography variant="body2" color="textSecondary" component="p">
-               {label.text}
+                {label.text}
               </Typography>
             </CardContent>
           </Card>
@@ -87,7 +86,11 @@ const RecursiveTree = ({ listMeta, onSelectCallback }) => {
           onSelectCallback(branch);
         }}
         isSelected={branch.selected}
-        label={{name: branch.author.name, avatar: branch.author.avatar, text: branch.text}}
+        label={{
+          name: branch.author.name,
+          avatar: branch.author.avatar,
+          text: branch.text,
+        }}
       >
         {branch.replies ? (
           branch.replies.map((branch) => {
@@ -122,7 +125,9 @@ const StyledTreeItem = styled(Box)({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
+  borderLeft: 'solid black 2px',
 });
 const StyledTreeChildren = styled(Box)({
   paddingLeft: '10px',
+  borderLeft: 'solid black 2px',
 });
